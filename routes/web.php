@@ -19,7 +19,7 @@ Route::get('promotion','ShopController@showPromotion')->name('promotion');
 
 Route::get('/loginform','ShopController@showLogin')->name('loginpage');
 
-Route::get('register','ShopController@showRegister')->name('register');
+Route::get('registerform','ShopController@showRegister')->name('registerpage');
 
 Route::get('shoppingcart','ShopController@showShoppingcart')->name('shoppingcart');
 
@@ -29,6 +29,7 @@ Route::get('brand','ShopController@showBrand')->name('brand');
 
 Route::get('itemdetail','ShopController@showItemdetail')->name('itemdetail');
 
+ 
 //Backend
 
 Route::middleware('role:Admin')->group(function(){

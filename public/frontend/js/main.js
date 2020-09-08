@@ -12,11 +12,11 @@ $(document).ready(function () {
         var name = $(this).data("name");
         var photo = $(this).data("photo");
         var price = $(this).data("price");
-        var qty = $(this).data("qty");
+        //var qty = $(this).data("qty");
 
-        console.log(id, name, photo, price, qty);
+        console.log(id, name, photo, price);
 
-        var data = { id: id, name: name, photo: photo, price: price, qty: qty };
+        var data = { id: id, name: name, photo: photo, price: price, qty:1};
 
         var oldcart = localStorage.getItem("cart");
 
@@ -36,8 +36,25 @@ $(document).ready(function () {
             cart.push(data);
         }
         localStorage.setItem("cart", JSON.stringify(cart));
-        showcart();
+        //showcart();
+        update_cart_count();
     });
+    function update_cart_count(){
+        var mycart=localStorage.getItem('cart');
+        if(mycart){
+            var mycart_obj=JSON.parse(mycart);
+            //check product_list array
+            if(mycart_obj.length){
+                var total=0;
+                $.each(mycart_obj,function(i,v){
+                    total+=v.qty;
+                })
+                $(".noticart").html(total);
+            }
+        }else{
+            $(".noticart").html(total);
+        }
+    }
 
     //show cart
 
@@ -126,6 +143,7 @@ $(document).ready(function () {
         cart.splice(id, 1);
         localStorage.setItem("cart", JSON.stringify(cart));
         showcart();
+        update_cart_count();
     });
 
     //change qty
@@ -164,7 +182,7 @@ $(document).ready(function () {
 
 //buy now
     $('.buy_now').on('click',function(){
-       // alert('hi');
+        //alert('hi');
         var notes=$('.notes').val();
         //var total=$('.total').val();
         var shopString=localStorage.getItem("cart");//string

@@ -109,7 +109,45 @@
 		</div>
 
 	    <!-- Disocunt Item -->
-		<div class="row">
+	          <div class="row">
+        <div class="col-12">
+          <div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel"  data-interval="1000">
+            <div class="MultiCarousel-inner">
+              @foreach($items as $item)
+              <div class="item">
+                <div class="pad15">
+                  <a href="{{route('itemdetail',$item->id)}}" class="text-dark text-decoration-none">
+                    <img src="{{ asset($item->photo)}}" class="img-fluid">
+                    <p class="text-truncate my-1">{{$item->name}}</p>
+                    <p class="item-price mb-2">
+                      @php $discount = $item->price-($item->price*($item->discount/100)) @endphp
+                      <span class="d-block">Ks {{number_format($discount)}}</span>
+                      <small><strike class="mr-2">{{number_format($item->price)}} Ks </strike>  -{{$item->discount}}%</small>
+                    </p>
+                  </a>
+                  {{-- <div class="star-rating">
+                    <ul class="list-inline">
+                      <li class="list-inline-item"><i class='bx bxs-star' ></i></li>
+                      <li class="list-inline-item"><i class='bx bxs-star' ></i></li>
+                      <li class="list-inline-item"><i class='bx bxs-star' ></i></li>
+                      <li class="list-inline-item"><i class='bx bxs-star' ></i></li>
+                      <li class="list-inline-item"><i class='bx bxs-star-half' ></i></li>
+                    </ul>
+                  </div> --}}
+
+                  <button class="addtocartBtn text-decoration-none" data-id="{{$item->id}}" data-name="{{$item->name}}" data-photo="{{$item->photo}}" data-price="{{$item->price}}" data-discount="{{$item->discount}}" data-codeno="{{$item->codeno}}">Add to Cart</button>
+                </div>
+              </div>
+              @endforeach
+              <button class="btn btnMain leftLst"><</button>
+              <button class="btn btnMain rightLst">></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+{{-- 		<div class="row">
 			<div class="col-12">
 				<div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel"  data-interval="1000">
 		            <div class="MultiCarousel-inner">
@@ -144,7 +182,7 @@
 		        </div>
 		    </div>
 		</div>
-
+ --}}
 		<!-- Flash Sale Item -->
 		<div class="row mt-5">
 			<h1> Flash Sale </h1>

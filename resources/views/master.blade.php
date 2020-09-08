@@ -75,15 +75,37 @@
 				            </div>
 						</div>
 					</div>
-					<div class="col-lg-4 col-10">
-						<a href="{{ route('login') }}" class="d-xl-block d-lg-block d-md-block d-none  text-decoration-none loginLink float-right"> Login | Sign-up </a>
+			<div class="col-lg-4 col-10">
+            @role('Customer')
+            <span classs="float-right d-xl-block d-lg-block d-md-block d-none">
+              <a id="navbarDropdown" class="nav-link dropdown-toggle loginLink" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                  {{ Auth::user()->name }}
+              </a>
 
-						
-					</div>
-				</div>
-			</div>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="{{ route('logout') }}"
+                     onclick="event.preventDefault();
+                                   document.getElementById('logout-form').submit();">
+                      {{ __('Logout') }}
+                  </a>
+
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                      @csrf
+                  </form>
+              </div>
+            </span>
+            @else
+            <span classs="float-right d-xl-block d-lg-block d-md-block d-none">
+              <a href="{{route('loginpage')}}" class="text-decoration-none loginLink"> Login </a> | <a href="{{route('registerpage')}}" class="text-decoration-none loginLink"> Sign-up </a>
+            </span>
+            @endrole
+          </div>
+        </div>
+      </div>
+
+      
 			
-			<!-- Shopping-cart -->
+			<!-- Shopping-cart --> 
 			<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6 order-xl-3 order-lg-3 order-md-4 order-sm-4 order-4 text-right">
 				<!-- Search ICON shopping cart -->
 
@@ -93,15 +115,16 @@
 
 				<a href="{{ route('shoppingcart') }}" class="text-decoration-none d-xl-inline d-lg-inline d-md-inline d-sm-none d-none shoppingcartLink"> 
 					<i class="icofont-shopping-cart"></i> 
-					<span class="badge badge-pill badge-light badge-notify cartNotistyle cartNoti"> 1 </span>
-					<span> 4,800 Ks </span>
+					<span class="badge badge-pill badge-light badge-notify cartNotistyle cartNoti"> 1</span>
+					<span class="cartTotal"></span>
+					{{-- <span> 4,800 Ks </span> --}}
 				</a>
 
 				<a href="" class="text-decoration-none d-xl-none d-lg-none d-md-none d-sm-inline-block d-inline-block shoppingcartLink"> 
 					<i class="icofont-shopping-cart"></i>
-					<span class="badge badge-pill badge-light badge-notify cartNotistyle cartNoti"> 1 </span>
+					<span class="badge badge-pill badge-light badge-notify cartNotistyle cartNoti"> </span>
 				</a>
-
+ 
 				<!-- App Download -->
 
 				<img src="image/download.png" class="img-fluid d-xl-inline d-lg-inline d-md-none d-sm-none d-none" style="width: 150px">

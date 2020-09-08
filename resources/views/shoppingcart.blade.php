@@ -75,7 +75,8 @@
 				
 				<div class="row">
 					<div class="col-md-6">
-						<input type="text" name="notes" class="notes form-control">
+						{{-- <input type="text" name="notes" class="notes form-control"> --}}
+						<textarea class="form-control" id="notes" placeholder="Any Request..."></textarea>
 					</div>
 					<div class="col-md-6">
 						@role('Customer')

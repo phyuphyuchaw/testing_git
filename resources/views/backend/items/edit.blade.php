@@ -17,7 +17,7 @@
   <div class="form-group row">
     <label  class="col-sm-2 col-form-label">Code No</label>
     <div class="col-sm-5">
-      <input type="text" name="codeno" class="form-control" id="" value="{{ $item->codeno}}" readonly="readonly">
+      <input type="text" name="codeno" class="form-control" id="" value="{{ $item->codeno}}" {{-- readonly="readonly" --}}>
       {{-- <span class="text-danger">{{ $error->frst('codenno')}}</span> --}}
     </div>
   </div>

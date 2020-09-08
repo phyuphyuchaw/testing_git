@@ -1,7 +1,7 @@
 @extends('backendtemplate')
 @section('content')
 <div class="container-fluid">
-	<div class="row">
+	<div class="container-row">
 		<div class="col-md-12 mb-3">
 
             <h1 class="h3 mb-0 text-gray-800">Voucherno:{{$order->voucherno}}</h1>

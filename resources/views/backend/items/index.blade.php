@@ -38,8 +38,15 @@
 			<td>{{$item->price}} MMK </td>
 			<td>
 				<a href="#" class="btn btn-primary">Detail</a>
+
 				<a href="{{route('items.edit',$item->id)}}" class="btn btn-warning">Edit</a>
-				<a href="#" class="btn btn-danger">Delete</a>
+
+				<form action="{{route('items.destroy',$item->id)}}" onsubmit="return confirm('Are you sure to delete?')" class="d-inline-block" method="POST">
+					@csrf
+					@method("DELETE")
+					<button class="btn btn-danger" type="submit">Delete</button>
+				</form>
+
 
 
 

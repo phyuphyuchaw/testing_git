@@ -33,4 +33,6 @@ class ShopController extends Controller
     function showItemdetail(){
         return view('itemdetail');
     }
+
+    
 }
